@@ -24,10 +24,6 @@ build/
 out/
 .cache/
 
-# Database / local storage
-db/
-*.sqlite
-*.db
 
 # Vercel
 .vercel
