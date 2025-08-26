@@ -13,6 +13,7 @@ hbs.registerPartials(__dirname + '/views/partials')
 app.use(express.urlencoded({extended: true}));
 //tailwind css path
 app.use(express.static(path.join(__dirname, "src")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use('/static' , express.static('static'))
 app.use('/', generalrouter)
 app.use('/p', postrouter)
