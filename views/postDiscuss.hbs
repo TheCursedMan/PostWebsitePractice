@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> baseHead customTitle = 'Discussion'}}
+<body>
+    {{> navBar}}
+    <div class="flex flex-col items-center">
+
+        <section class="mt-4 flex flex-col w-1/2">
+            <h2 class="text-center text-4xl mb-4"> Create new post</h2>
+            <form action="/p/new" method="post" class="flex flex-col p-3 space-y-3">
+                <label for="content"> Post title </label>
+
+                <input class="outline-1 outline-amber-50 rounded-xs bg-slate-900 text-white p-3" 
+                type="text" name="title" placeholder="post title..." value="{{value.title}}">
+
+                <label for="content"> Post content </label>
+                <textarea placeholder="post content.." class="outline-1 outline-amber-50 rounded-xs bg-slate-900 text-white p-3"  
+                name="content" >{{value.content}}</textarea>
+
+                <label for="from"> From </label>
+                <input class="outline-1 outline-amber-50 rounded-xs bg-slate-900 text-white p-3" 
+                type="text" name="from" placeholder="from ...." value="{{value.from}}">
+                
+                <div class="flex flex-row">
+                    <input id='input-accepted' class="outline-1 outline-amber-50 rounded-xs bg-slate-900 text-white p-3" 
+                    type="checkbox" name="accepted" >
+                    <label for="input-accepted"> Just agree and check this box</label>
+                </div>
+                <button type="submit" class="bg-emerald-500 text-white w-1/12 rounded-[16px] p-2 hover:cursor-pointer"> Post </button>
+                {{#if errormessage}}
+                    <p class="text-sm text-red-700"> {{errormessage}}</p>
+                {{/if}}
+            </form>
+            
+        </section>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> baseHead}}
+<body>
+    {{> navBar}}
+    <section class="mt-4">
+
+   
+        <h1 class="text-4xl text-center"> Homepage </h1>
+
+        <div class="">
+            {{#each allPosts}}
+                <div class="bg-emerald-200 m-3 p-3 w-1/3">
+                    <h3><a href="/p/{{this.idPost}}"> {{ this.title }}</a> </h3>
+                    <p class="text-zinc-500"> {{this.from}} | <span class="text-sm"> {{this.createdAt}}</span></p>
+                    <p class="text-zinc-500"> 
+                        {{#if this.CommentCount }}
+                            {{this.CommentCount}} Comments
+                        {{else}}
+                            No one comment here :X
+                        {{/if}}
+                    </p>
+
+                </div>
+            {{/each}}
+        </div>
+     </section>
+</body>
+</html>

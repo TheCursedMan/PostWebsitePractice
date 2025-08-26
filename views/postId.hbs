@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> baseHead customTitle= personalPost.title}}
+<body>
+    {{> navBar}}
+    <div class="flex flex-col m-6 p-6 bg-blue-900 text-white">
+        <p class="text-3xl"> 
+            {{personalPost.title}}
+        </p>
+        <hr class="my-1" style="color: rgba(224, 224, 224, 0.429)">
+        <p class="text-zinc-300"> {{personalPost.from}} | {{personalPost.createdAt}}</p>
+        <p class="my-4 font-thin"> {{personalPost.content}}</p>
+        <p>{{#if personalPost.CommentCount}} 
+               {{personalPost.CommentCount}} comments.-
+               {{else}}
+                No one comment here :<
+            {{/if}}
+
+        </p>
+        
+    </div>
+
+    {{!-- add new comment --}}
+    <div class="flex flex-col m-6 p-6">
+        <form action="/p/{{personalPost.idPost}}/comment" method="post" class="flex flex-col space-y-3">
+            <textarea class="outline-1 p-2" name="content" placeholder="Comment here.." >{{value.content}}</textarea>
+            <input class="outline-1 p-2" type="text" name="from" placeholder="from.." value="{{value.from}}">
+            <button type="submit" class="w-1/12 bg-emerald-500 text-white p-2 rounded-md hover:cursor-pointer"> Submit </button>
+            {{#if errormessage}}
+                <p class="text-sm text-red-700"> {{errormessage}}</p>
+            {{/if}}
+        </form>
+    </div>
+
+    {{#if postcomments}}
+    <div class="flex flex-col my-4 p-6">
+
+        <h2 class="text-2xl"> Comment </h2>
+            <hr>
+
+    </div>
+    {{/if}}
+    {{#each postcomments}}
+    <div class="flex flex-col mx-6 my-4 p-6 bg-violet-700 text-white">
+        <p class="text-zinc-300"> {{this.from}} | {{this.createdAt}}</p>
+        <hr class="my-1" style="color: rgba(224, 224, 224, 0.429)">
+        <p class="text-2xl"> 
+            {{this.content}}
+        </p>
+    </div>
+    {{/each}}
+</body>
+</html>
