@@ -31,9 +31,7 @@ const db = new MongoClient(uri, {
 });
 async function connectDB() {
   try {
-    if (!db.topology?.isConnected()) {
-        await db.connect();
-    }
+    await db.connect();
     console.log('✅ MongoDB connected')
     return db.db(process.env.MONGODB_DBNAME);
     } catch (err) {
